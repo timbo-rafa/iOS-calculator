@@ -3,7 +3,7 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 1.0 - Operations Implemented. Clear functionality. Equal implementation. 
+ * Version 1.1 - Trying to fix git commit username
  *
  */
 

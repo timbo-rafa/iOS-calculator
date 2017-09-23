@@ -3,7 +3,9 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 2.2 - Fix: Press 0 infinite times display stays 0
+ * Version 2.3 - Fix: Only one decimal point allowed on whole string
+ * OK press 0...... stays 0.
+ * OK press 0.5..... stays 0.5
  * OK press 0 stays 0
  * OK 3 + 2 = 5, then = presses keep adding 2
  * OK 2 + 2 = 4, then 5 + 5 gives 10
@@ -86,17 +88,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func decimal(_ sender: UIButton) {
-      if label.text == "" {
-        label.text = "0."
+      let dotCharacterSet = CharacterSet(charactersIn: "." )
+      if label.text?.rangeOfCharacter(from: dotCharacterSet ) == nil {
+        if label.text == "" {
+          label.text = "0."
+        }
+        else if performingMath == true {
+          label.text = "0."
+          performingMath = false
+        }
+        else {
+          label.text = label.text! + "."
+        }
       }
-      if performingMath == true {
-        label.text = "0."
-        performingMath = false
-      }
-      else {
-        label.text = label.text! + "."
-      }
-      
       
     }
     

@@ -3,7 +3,8 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 2.1 - Fix: +- after equal now does last operation correctly. Mini test samples.
+ * Version 2.2 - Fix: Press 0 infinite times display stays 0
+ * OK press 0 stays 0
  * OK 3 + 2 = 5, then = presses keep adding 2
  * OK 2 + 2 = 4, then 5 + 5 gives 10
  * OK 2 + 2 = 4, then +- displays -4, then = gives -2 (added 2)
@@ -30,6 +31,10 @@ class ViewController: UIViewController {
         label.text = label.text! + String(sender.tag)
       }
       numberOnDisplay = Double(label.text!)!
+        // Prevent 0 spamming on screen
+        if label.text == "00" {
+            label.text = "0"
+        }
     }
     
     @IBAction func operations(_ sender: UIButton) {

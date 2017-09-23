@@ -3,8 +3,11 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 2.0 - Fix - Now cleans screen when number is pressed  after equal
- *
+ * Version 2.1 - Fix: +- after equal now does last operation correctly. Mini test samples.
+ * OK 3 + 2 = 5, then = presses keep adding 2
+ * OK 2 + 2 = 4, then 5 + 5 gives 10
+ * OK 2 + 2 = 4, then +- displays -4, then = gives -2 (added 2)
+ * OK .5 / 0.2 = 2.5, then equals gives 12.5 and keeps going
  */
 
 import UIKit
@@ -93,7 +96,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeSign(_ sender: UIButton) {
-        label.text = String( Double( label.text!)! * -1 )
+        previousNumber = Double( label.text!)! * -1
+        label.text = String( previousNumber )
     }
     
     @IBAction func percent(_ sender: UIButton) {

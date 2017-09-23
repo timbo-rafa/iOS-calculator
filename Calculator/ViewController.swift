@@ -3,7 +3,7 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 1.1 - Trying to fix git commit username
+ * Version 1.4 - Change Sign
  *
  */
 
@@ -30,7 +30,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operations(_ sender: UIButton) {
-        previousNumber = Double(label.text!)!
+        if performingMath == false {
+          previousNumber = Double(label.text!)!
+        }
         if label.text != "" {
           if (sender.tag == 14) {
             label.text = "/"
@@ -64,13 +66,33 @@ class ViewController: UIViewController {
         else if operation == 11 {
             label.text = String(previousNumber + numberOnDisplay)
         }
+        previousNumber = Double(label.text!)!
     }
     
     @IBAction func clear(_ sender: UIButton) {
-        label.text = "0"
+        label.text = ""
         previousNumber = 0
         numberOnDisplay = 0
         operation = 0
+    }
+    
+    @IBAction func decimal(_ sender: UIButton) {
+      if label.text == "" {
+        label.text = "0."
+      }
+      if performingMath == true {
+        label.text = "0."
+        performingMath = false
+      }
+      else {
+        label.text = label.text! + "."
+      }
+      
+      
+    }
+    
+    @IBAction func changeSign(_ sender: UIButton) {
+        label.text = String( Double( label.text!)! * -1 )
     }
     
     override func viewDidLoad() {

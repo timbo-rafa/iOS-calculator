@@ -137,6 +137,9 @@
                                 <state key="normal" title="±">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeSign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FrS-M9-BQl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="18" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy3-Xe-knu">
                                 <rect key="frame" x="188" y="573" width="94" height="94"/>
@@ -146,6 +149,9 @@
                                 <state key="normal" title=".">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="decimal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BOV-zN-7a1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-Dp-cow">
                                 <rect key="frame" x="188" y="492" width="94" height="94"/>

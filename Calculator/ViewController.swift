@@ -3,7 +3,7 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 1.5 - Percent
+ * Version 2.0 - Fix - Now cleans screen when number is pressed  after equal
  *
  */
 
@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         else if operation == 11 { // PLUS
             label.text = String(previousNumber + numberOnDisplay)
         }
+        performingMath = true
         previousNumber = Double(label.text!)!
     }
     

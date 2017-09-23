@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 3.1 - Documenting Code. Removed redundant code.
+ * Version 3.1 - Documenting Code.
  *
  * Tests:
  * OK 5*= keeps multiplying by 5 by 5 by 5...
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     var previousNumber:Double = 0;
     // variable that tells us if an operation was the last keypress
     var performingMath = true;
-    // type of operation (related to button tag)
+    // type of operation (related to button's tag)
     var operation = 0;
     
     // label displayed on screen

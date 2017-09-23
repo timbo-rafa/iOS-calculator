@@ -3,7 +3,7 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 2.3 - Fix: Only one decimal point allowed on whole string
+ * Version 3.0 - Start with 0, by user experience
  * OK press 0...... stays 0.
  * OK press 0.5..... stays 0.5
  * OK press 0 stays 0
@@ -30,7 +30,11 @@ class ViewController: UIViewController {
         performingMath = false
       }
       else {
-        label.text = label.text! + String(sender.tag)
+        if label.text == "0" {
+          label.text = String(sender.tag)
+        } else {
+          label.text = label.text! + String(sender.tag)
+        }
       }
       numberOnDisplay = Double(label.text!)!
         // Prevent 0 spamming on screen
@@ -43,7 +47,7 @@ class ViewController: UIViewController {
         if performingMath == false {
           previousNumber = Double(label.text!)!
         }
-        if label.text != "" {
+        if label.text != "" { //????
           if (sender.tag == 14) {
             label.text = "/"
           }
@@ -81,7 +85,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clear(_ sender: UIButton) {
-        label.text = ""
+        label.text = "0"
         previousNumber = 0
         numberOnDisplay = 0
         operation = 0
@@ -119,7 +123,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Start with 0, by user experience.
+        label.text = "0"
     }
 
     override func didReceiveMemoryWarning() {

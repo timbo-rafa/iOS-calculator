@@ -3,7 +3,7 @@
  * Date: September 19, 2017
  * StudentID: 300962878
  * Description: Calculator App for iOS
- * Version 1.4 - Change Sign
+ * Version 1.5 - Percent
  *
  */
 
@@ -54,16 +54,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equals(_ sender: UIButton) {
-        if operation == 14 {
+        if operation == 14 { // DIVIDE
             label.text = String(previousNumber / numberOnDisplay)
         }
-        else if operation == 13 {
+        else if operation == 13 { // MULTIPLY
             label.text = String(previousNumber * numberOnDisplay)
         }
-        else if operation == 12 {
+        else if operation == 12 { // MINUS
             label.text = String(previousNumber - numberOnDisplay)
         }
-        else if operation == 11 {
+        else if operation == 11 { // PLUS
             label.text = String(previousNumber + numberOnDisplay)
         }
         previousNumber = Double(label.text!)!
@@ -94,6 +94,14 @@ class ViewController: UIViewController {
     @IBAction func changeSign(_ sender: UIButton) {
         label.text = String( Double( label.text!)! * -1 )
     }
+    
+    @IBAction func percent(_ sender: UIButton) {
+        previousNumber = Double(label.text!)! / 100
+        label.text = "%"
+        operation = 13 // Multiply
+        performingMath = true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

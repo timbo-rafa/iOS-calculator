@@ -121,6 +121,7 @@ class ViewController: UIViewController {
       }
       
     }
+ 
     
     // change sign (+-) keypress handler
     @IBAction func changeSign(_ sender: UIButton) {

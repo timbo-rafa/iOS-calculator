@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 4.0 - Changed Design. Added Constraints.
+ * Version 5.0 - Round Corner Buttons.
  *
  * Tests:
  * OK 5*= keeps multiplying by 5 by 5 by 5...
@@ -122,6 +122,26 @@ class ViewController: UIViewController {
       
     }
  
+    @IBOutlet weak var zero: UIButton!
+    @IBOutlet weak var decimalPoint: UIButton!
+    @IBOutlet weak var equal: UIButton!
+    @IBOutlet weak var plus: UIButton!
+    @IBOutlet weak var minus: UIButton!
+    @IBOutlet weak var multiply: UIButton!
+    @IBOutlet weak var divide: UIButton!
+    @IBOutlet weak var percent: UIButton!
+    @IBOutlet weak var changeSign: UIButton!
+    @IBOutlet weak var clear: UIButton!
+    @IBOutlet weak var one: UIButton!
+    @IBOutlet weak var two: UIButton!
+    @IBOutlet weak var three: UIButton!
+    @IBOutlet weak var four: UIButton!
+    @IBOutlet weak var five: UIButton!
+    @IBOutlet weak var six: UIButton!
+    @IBOutlet weak var seven: UIButton!
+    @IBOutlet weak var eight: UIButton!
+    @IBOutlet weak var nine: UIButton!
+    @IBOutlet weak var voidButton: UIButton!
     
     // change sign (+-) keypress handler
     @IBAction func changeSign(_ sender: UIButton) {
@@ -145,8 +165,32 @@ class ViewController: UIViewController {
     // init
     override func viewDidLoad() {
         super.viewDidLoad()
+        roundButtonCorners()
         // Start displaying 0, by user experience.
         label.text = "0"
+    }
+    
+    func roundButtonCorners() {
+        zero.layer.cornerRadius = 5
+        one.layer.cornerRadius = 5
+        two.layer.cornerRadius = 5
+        three.layer.cornerRadius = 5
+        four.layer.cornerRadius = 5
+        five.layer.cornerRadius = 5
+        six.layer.cornerRadius = 5
+        seven.layer.cornerRadius = 5
+        eight.layer.cornerRadius = 5
+        nine.layer.cornerRadius = 5
+        decimalPoint.layer.cornerRadius = 5
+        equal.layer.cornerRadius = 5
+        plus.layer.cornerRadius = 5
+        minus.layer.cornerRadius = 5
+        multiply.layer.cornerRadius = 5
+        divide.layer.cornerRadius = 5
+        percent.layer.cornerRadius = 5
+        changeSign.layer.cornerRadius = 5
+        clear.layer.cornerRadius = 5
+        voidButton.layer.cornerRadius = 5
     }
 
     override func didReceiveMemoryWarning() {

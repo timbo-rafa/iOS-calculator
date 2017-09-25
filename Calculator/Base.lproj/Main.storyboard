@@ -293,7 +293,27 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changeSign" destination="87k-Vn-WbG" id="KHw-ye-1s6"/>
+                        <outlet property="clear" destination="PUN-Yq-VBv" id="9pV-Un-cWg"/>
+                        <outlet property="decimalPoint" destination="cy3-Xe-knu" id="z8y-aR-YM8"/>
+                        <outlet property="divide" destination="grK-aK-sTQ" id="mqf-ur-WBD"/>
+                        <outlet property="eight" destination="i2y-pM-u1i" id="Zev-gw-hr6"/>
+                        <outlet property="equal" destination="pxD-h8-HCz" id="c0p-LO-kVV"/>
+                        <outlet property="five" destination="3IX-xt-kZP" id="yC6-8O-e2k"/>
+                        <outlet property="four" destination="nec-xC-H7s" id="UUx-F1-xYt"/>
                         <outlet property="label" destination="OiG-hx-6tv" id="1gv-hQ-uVM"/>
+                        <outlet property="minus" destination="wDl-yx-WX8" id="diW-Ch-f0t"/>
+                        <outlet property="multiply" destination="mBg-du-3SW" id="2p8-vZ-Rcp"/>
+                        <outlet property="nine" destination="pPm-du-Aff" id="fG9-Kf-DJZ"/>
+                        <outlet property="one" destination="iXb-TK-FjK" id="EhW-W2-D7z"/>
+                        <outlet property="percent" destination="Dv7-SA-rXI" id="8Mf-ga-Ifg"/>
+                        <outlet property="plus" destination="K0O-fd-cZo" id="hBF-p7-WnJ"/>
+                        <outlet property="seven" destination="WAw-93-7MJ" id="qrD-hs-ibj"/>
+                        <outlet property="six" destination="7qv-tK-MXQ" id="4dk-uG-miu"/>
+                        <outlet property="three" destination="Fdo-Dp-cow" id="2qh-8Z-ugN"/>
+                        <outlet property="two" destination="EZV-qV-kJz" id="3rR-Gd-pi1"/>
+                        <outlet property="voidButton" destination="cMO-dM-Uu1" id="zJh-nP-Axg"/>
+                        <outlet property="zero" destination="fCV-bn-PuR" id="5es-ea-7Xm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

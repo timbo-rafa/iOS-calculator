@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 3.1 - Documenting Code.
+ * Version 4.0 - Changed Design. Added Constraints.
  *
  * Tests:
  * OK 5*= keeps multiplying by 5 by 5 by 5...
@@ -135,6 +135,11 @@ class ViewController: UIViewController {
         label.text = "%"
         operation = 13 // Multiply
         performingMath = true
+    }
+    
+    // ANIMATION
+    @IBAction func animate(_ sender: UIButton) {
+      
     }
     
     // init

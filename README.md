@@ -1,6 +1,6 @@
 # Simple iOS Calculator
 
-** Features **
+**Features**
 
 1. Number buttons from 0 to 9 and a decimal point button (.)
 for user input of integer or floating points.

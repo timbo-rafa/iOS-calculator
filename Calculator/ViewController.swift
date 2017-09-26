@@ -4,9 +4,10 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 6.2 - Fix: Clear as first keypress does not break
+ * Version 6.3 - Clarifying behaviour: multiple equal keypresses does multiplication after percentage
  *
  * Tests:
+ * OK C as first keypress
  * OK 5*= keeps multiplying by 5 by 5 by 5...
  * OK 2+= keeps summing 2
  * OK press 0...... stays 0.
@@ -111,6 +112,9 @@ class ViewController: UIViewController {
         // perform operation requested
         if operation.tag == 15 { // PERCENT
             label.text = String(previousNumber * numberOnDisplay)
+            // bug fix: state we are doing multiply explicitly
+            operation = multiply
+            showBorder(multiply)
         }
         if operation.tag == 14 { // DIVIDE
             label.text = String(previousNumber / numberOnDisplay)

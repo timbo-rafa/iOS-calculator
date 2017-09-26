@@ -4,7 +4,8 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 5.1 - Minor design changes. Changed color of percent and changeSign buttons
+ * Version 6.0 - Displaying border around current operation.
+ *  performingMath back to boolean
  *
  * Tests:
  * OK 5*= keeps multiplying by 5 by 5 by 5...
@@ -31,9 +32,9 @@ class ViewController: UIViewController {
     // previous number typed or calculated
     var previousNumber:Double = 0;
     // variable that tells us the operation that was the last requested
-    @IBOutlet weak var performingMath: UIButton!
+    var performingMath = false;
     // type of operation (related to button's tag)
-    var operation = 0;
+    var operation: UIButton!;
     
     // label displayed on screen
     @IBOutlet weak var label: UILabel!
@@ -57,15 +58,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var seven: UIButton!
     @IBOutlet weak var eight: UIButton!
     @IBOutlet weak var nine: UIButton!
+    // unused button
     @IBOutlet weak var voidButton: UIButton!
     
     // METHODS ==========================================
     // number keypress handler
     @IBAction func numbers(_ sender: UIButton) {
       // if an operation was the last key pressed, display should be wiped
-      if performingMath != nil {
+      if performingMath == true {
         label.text = String(sender.tag)
-        performingMath = nil
+        performingMath = false
       }
       else {
         // prevent 0 spam on display (00000)
@@ -79,7 +81,7 @@ class ViewController: UIViewController {
     }
     // handle plus (+), minus (-), multiply (*), and division (/) buttons
     @IBAction func operations(_ sender: UIButton) {
-        if performingMath == nil {
+        if performingMath == false { //bug fix for multiple presses
           previousNumber = Double(label.text!)!
         }
         if label.text != "" { //????
@@ -96,26 +98,30 @@ class ViewController: UIViewController {
             label.text = "+"
           }
         }
-        operation = sender.tag
-        performingMath = sender
+        operation = sender
+        performingMath = true
+        showBorder(operation)
     }
     
     // Equal keypress handler
     @IBAction func equals(_ sender: UIButton) {
         // perform operation requested
-        if operation == 14 { // DIVIDE
+        if operation.tag == 15 { // PERCENT
+            label.text = String(previousNumber * numberOnDisplay / 100)
+        }
+        if operation.tag == 14 { // DIVIDE
             label.text = String(previousNumber / numberOnDisplay)
         }
-        else if operation == 13 { // MULTIPLY
+        else if operation.tag == 13 { // MULTIPLY
             label.text = String(previousNumber * numberOnDisplay)
         }
-        else if operation == 12 { // MINUS
+        else if operation.tag == 12 { // MINUS
             label.text = String(previousNumber - numberOnDisplay)
         }
-        else if operation == 11 { // PLUS
+        else if operation.tag == 11 { // PLUS
             label.text = String(previousNumber + numberOnDisplay)
         }
-        performingMath = sender
+        performingMath = true
         previousNumber = Double(label.text!)!
     }
     
@@ -124,7 +130,7 @@ class ViewController: UIViewController {
         label.text = "0"
         previousNumber = 0
         numberOnDisplay = 0
-        operation = 0
+        hideBorder( operation )
     }
     
     // decimal point (.) keypress handler
@@ -133,9 +139,9 @@ class ViewController: UIViewController {
       // prevent multiple occurrences
       if label.text?.rangeOfCharacter(from: dotCharacterSet ) == nil {
         // prepend 0 if necessary
-        if performingMath != nil {
+        if performingMath == true {
           label.text = "0."
-          performingMath = nil
+          performingMath = false
         }
         else {
           label.text = label.text! + "."
@@ -153,23 +159,24 @@ class ViewController: UIViewController {
     // percent (%) keypress handler
     @IBAction func percent(_ sender: UIButton) {
         if (label.text != "%") {
-            previousNumber = Double(label.text!)! / 100
+            previousNumber = Double(label.text!)!
             label.text = "%"
-            operation = 13 // Multiply
-            performingMath = sender
+            operation = sender
+            performingMath = true
         }
+        showBorder(sender)
     }
     
     // init
     override func viewDidLoad() {
         super.viewDidLoad()
-        roundButtonCorners()
+        buttonCorners()
         // Start displaying 0, by user experience.
         label.text = "0"
     }
     
-    // round button corners
-    func roundButtonCorners() {
+    // set up button corners
+    func buttonCorners() {
         zero.layer.cornerRadius = 5
         one.layer.cornerRadius = 5
         two.layer.cornerRadius = 5
@@ -190,6 +197,25 @@ class ViewController: UIViewController {
         changeSign.layer.cornerRadius = 5
         clear.layer.cornerRadius = 5
         voidButton.layer.cornerRadius = 5
+        
+        plus.layer.borderColor = UIColor.white.cgColor
+        minus.layer.borderColor = UIColor.white.cgColor
+        multiply.layer.borderColor = UIColor.white.cgColor
+        divide.layer.borderColor = UIColor.white.cgColor
+        percent.layer.borderColor = UIColor.white.cgColor
+        
+    }
+    
+    func showBorder(_ sender: UIButton) {
+        hideBorder(plus)
+        hideBorder(minus)
+        hideBorder(multiply)
+        hideBorder(divide)
+        hideBorder(percent)
+        sender.layer.borderWidth = 2
+    }
+    func hideBorder(_ sender: UIButton) {
+            sender.layer.borderWidth = 0
     }
 
     override func didReceiveMemoryWarning() {

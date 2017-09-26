@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 7.0 - Splash screen
+ * Version 8.0 - Label inequality constraint for better landscape fitting
  *
  * Tests:
  * OK C as first keypress

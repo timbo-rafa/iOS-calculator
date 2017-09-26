@@ -4,8 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 6.0 - Displaying border around current operation.
- *  performingMath back to boolean
+ * Version 6.2 - Fix: Clear as first keypress does not break
  *
  * Tests:
  * OK 5*= keeps multiplying by 5 by 5 by 5...
@@ -85,10 +84,14 @@ class ViewController: UIViewController {
           previousNumber = Double(label.text!)!
         }
         if label.text != "" { //????
-          if (sender.tag == 14) { // DIVIDE
+          if (sender.tag == 15) { // PERCENT
+            label.text = "%"
+            previousNumber /= 100
+          }
+          else if (sender.tag == 14) { // DIVIDE
             label.text = "/"
           }
-          if (sender.tag == 13) { // MULTIPLY
+          else if (sender.tag == 13) { // MULTIPLY
             label.text = "*"
           }
           if (sender.tag == 12) { // MINUS
@@ -107,7 +110,7 @@ class ViewController: UIViewController {
     @IBAction func equals(_ sender: UIButton) {
         // perform operation requested
         if operation.tag == 15 { // PERCENT
-            label.text = String(previousNumber * numberOnDisplay / 100)
+            label.text = String(previousNumber * numberOnDisplay)
         }
         if operation.tag == 14 { // DIVIDE
             label.text = String(previousNumber / numberOnDisplay)
@@ -156,25 +159,6 @@ class ViewController: UIViewController {
         label.text = String( previousNumber )
     }
     
-    // percent (%) keypress handler
-    @IBAction func percent(_ sender: UIButton) {
-        if (label.text != "%") {
-            previousNumber = Double(label.text!)!
-            label.text = "%"
-            operation = sender
-            performingMath = true
-        }
-        showBorder(sender)
-    }
-    
-    // init
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        buttonCorners()
-        // Start displaying 0, by user experience.
-        label.text = "0"
-    }
-    
     // set up button corners
     func buttonCorners() {
         zero.layer.cornerRadius = 5
@@ -218,6 +202,16 @@ class ViewController: UIViewController {
             sender.layer.borderWidth = 0
     }
 
+    // init
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        buttonCorners()
+        // bug fix for clear keypress before any operation
+        operation = voidButton
+        // Start displaying 0, by user experience.
+        label.text = "0"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

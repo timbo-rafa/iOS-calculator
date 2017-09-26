@@ -25,8 +25,6 @@ class ViewController: UIViewController {
     
     // VARIABLES =====================================
     
-    
-    
     // Double value for number on screen
     var numberOnDisplay:Double = 0;
     // previous number typed or calculated
@@ -84,7 +82,6 @@ class ViewController: UIViewController {
         if performingMath == false { //bug fix for multiple presses
           previousNumber = Double(label.text!)!
         }
-        if label.text != "" { //????
           if (sender.tag == 15) { // PERCENT
             label.text = "%"
             previousNumber /= 100
@@ -101,7 +98,6 @@ class ViewController: UIViewController {
           if (sender.tag == 11) { // PLUS
             label.text = "+"
           }
-        }
         operation = sender
         performingMath = true
         showBorder(operation)
@@ -191,7 +187,6 @@ class ViewController: UIViewController {
         multiply.layer.borderColor = UIColor.white.cgColor
         divide.layer.borderColor = UIColor.white.cgColor
         percent.layer.borderColor = UIColor.white.cgColor
-        
     }
     
     func showBorder(_ sender: UIButton) {
@@ -202,6 +197,7 @@ class ViewController: UIViewController {
         hideBorder(percent)
         sender.layer.borderWidth = 2
     }
+    
     func hideBorder(_ sender: UIButton) {
             sender.layer.borderWidth = 0
     }

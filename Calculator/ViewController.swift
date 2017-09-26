@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 6.3 - Clarifying behaviour: multiple equal keypresses does multiplication after percentage
+ * Version 6.4 - Fix: Decimal point now working after equal keypress
  *
  * Tests:
  * OK C as first keypress
@@ -143,16 +143,16 @@ class ViewController: UIViewController {
     // decimal point (.) keypress handler
     @IBAction func decimal(_ sender: UIButton) {
       let dotCharacterSet = CharacterSet(charactersIn: "." )
-      // prevent multiple occurrences
+      
+      // prepend 0 if necessary
+      if performingMath == true {
+        label.text = "0."
+        performingMath = false
+      }
+        
+      // prevent multiple decimal points
       if label.text?.rangeOfCharacter(from: dotCharacterSet ) == nil {
-        // prepend 0 if necessary
-        if performingMath == true {
-          label.text = "0."
-          performingMath = false
-        }
-        else {
-          label.text = label.text! + "."
-        }
+        label.text = label.text! + "."
       }
       
     }

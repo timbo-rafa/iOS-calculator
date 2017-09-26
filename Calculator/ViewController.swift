@@ -4,7 +4,7 @@
  * StudentID: 300962878
  * Description: Calculator App for iOS
  * based on https://www.youtube.com/watch?v=AG2QDwmj64A
- * Version 6.4 - Fix: Decimal point now working after equal keypress
+ * Version 7.0 - Splash screen
  *
  * Tests:
  * OK C as first keypress

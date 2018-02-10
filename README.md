@@ -13,3 +13,6 @@ for user input of integer or floating points.
 8. Splash Screen.
 9. Adaptative to Portrait and Landscape orientations.
 
+![Calculator](https://raw.githubusercontent.com/timbo-rafa/iOS-calculator/master/screenshots/calculator-landscape.png)
+
+![Calculator sample](https://raw.githubusercontent.com/timbo-rafa/iOS-calculator/master/screenshots/calculator.gif)
